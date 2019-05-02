@@ -15,4 +15,11 @@ public class AdditionStrategy implements IOperationStrategy {
         int op2=this.max-op1;
         return String.format("%s + %s = %n", op1, op2);
     }
+
+    public static IOperationStrategy take(Parameters parameters){
+        if(parameters.getAdd().getMax()>0){
+            return new AdditionStrategy(parameters.getAdd().getMax());
+        }
+        return null;
+    }
 }

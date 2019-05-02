@@ -17,4 +17,5 @@ public class SubtractionStrategy implements IOperationStrategy {
 
         return String.format("%s - %s = %n", op1, op2);
     }
+
 }
