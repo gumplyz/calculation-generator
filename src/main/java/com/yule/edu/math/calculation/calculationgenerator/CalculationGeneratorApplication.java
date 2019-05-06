@@ -42,13 +42,7 @@ public class CalculationGeneratorApplication {
         return args -> {
             IOperationStrategy[] ops = new IOperationStrategy[]{
                     new AdditionStrategy(20),
-                    new AdditionStrategy(20),
-                    new AdditionStrategy(20),
-                    new AdditionStrategy(20),
-                    new SubtractionStrategy(1, 20),
-                    new SubtractionStrategy(2, 20),
-                    new SubtractionStrategy(3, 20),
-                    new SubtractionStrategy(4, 20)
+                    new SubtractionStrategy(20)
             };
 
             Collection<String> questions = calculationGenerator.generate(2000, ops);
