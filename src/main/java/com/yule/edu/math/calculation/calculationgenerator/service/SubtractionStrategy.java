@@ -17,4 +17,11 @@ public class SubtractionStrategy implements IOperationStrategy {
         return String.format("%s - %s = %n", op2, op1);
     }
 
+  public static IOperationStrategy take(Parameters parameters){
+    if(parameters.getSubstract().getMax()>0){
+      return new SubtractionStrategy(parameters.getSubstract().getMax());
+    }
+    return null;
+  }
+
 }
