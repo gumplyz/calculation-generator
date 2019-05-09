@@ -8,7 +8,13 @@ public class AdditionStrategyTest {
 
     @Test
     public void generate() {
-        AdditionStrategy additionStrategy=new AdditionStrategy(20);
+        AdditionStrategy additionStrategy=new AdditionStrategy(new Parameters.Add(20));
+        assertNotNull(additionStrategy.generate());
+    }
+
+    @Test
+    public void generateThreeOperands() {
+        AdditionStrategy additionStrategy=new AdditionStrategy(new Parameters.Add(20,3));
         assertNotNull(additionStrategy.generate());
     }
 }

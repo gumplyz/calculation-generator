@@ -3,6 +3,7 @@ package com.yule.edu.math.calculation.calculationgenerator;
 import com.yule.edu.math.calculation.calculationgenerator.service.AdditionStrategy;
 import com.yule.edu.math.calculation.calculationgenerator.service.CalculationGenerator;
 import com.yule.edu.math.calculation.calculationgenerator.service.IOperationStrategy;
+import com.yule.edu.math.calculation.calculationgenerator.service.Parameters;
 import com.yule.edu.math.calculation.calculationgenerator.service.SubtractionStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,7 +19,6 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.Collection;
-import java.util.Set;
 
 @SpringBootApplication
 public class CalculationGeneratorApplication {
@@ -37,11 +36,11 @@ public class CalculationGeneratorApplication {
         SpringApplication.run(CalculationGeneratorApplication.class, args);
     }
 
-    @Bean
+
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
             IOperationStrategy[] ops = new IOperationStrategy[]{
-                    new AdditionStrategy(20),
+                    new AdditionStrategy(new Parameters.Add(20)),
                     new SubtractionStrategy(20)
             };
 
