@@ -8,7 +8,7 @@ public class SubtractionStrategyTest {
 
     @Test
     public void generate() {
-        SubtractionStrategy subtractionStrategy=new SubtractionStrategy(20);
+        SubtractionStrategy subtractionStrategy=new SubtractionStrategy(new Parameters.Substract(20));
         assertNotNull(subtractionStrategy.generate());
     }
 }

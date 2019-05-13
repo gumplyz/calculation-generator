@@ -3,23 +3,32 @@ package com.yule.edu.math.calculation.calculationgenerator.service;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SubtractionStrategy implements IOperationStrategy {
-    private int max;
+    private Parameters.Substract parameters;
 
-    public SubtractionStrategy(int max) {
-        this.max = max;
+    public SubtractionStrategy(Parameters.Substract parameters) {
+        this.parameters = parameters;
     }
 
     @Override
     public String generate() {
-        int op1 = ThreadLocalRandom.current().nextInt(0, this.max + 1);
-        int op2 = ThreadLocalRandom.current().nextInt(op1, this.max + 1);
+        int[] ops= new int[this.parameters.getNumOps()];
+        int lower=0;
+        for (int i = 0; i < this.parameters.getNumOps(); i++) {
+            ops[i] = ThreadLocalRandom.current().nextInt(lower, this.parameters.getMax() + 1);
+            lower=ops[i];
+        }
 
-        return String.format("%s - %s = %n", op2, op1);
+        StringBuilder sb= new StringBuilder();
+        for (int i = ops.length-1; i>=1  ; i--) {
+            sb.append(ops[i]).append(" - ");
+        }
+
+        return  sb.append(ops[0]).append(" = ").toString();
     }
 
   public static IOperationStrategy take(Parameters parameters){
-    if(parameters.getSubstract().getMax()>0){
-      return new SubtractionStrategy(parameters.getSubstract().getMax());
+    if(parameters.getSubstract()!=null){
+      return new SubtractionStrategy(parameters.getSubstract());
     }
     return null;
   }

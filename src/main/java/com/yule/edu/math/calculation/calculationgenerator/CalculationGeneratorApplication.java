@@ -41,7 +41,7 @@ public class CalculationGeneratorApplication {
         return args -> {
             IOperationStrategy[] ops = new IOperationStrategy[]{
                     new AdditionStrategy(new Parameters.Add(20)),
-                    new SubtractionStrategy(20)
+                    new SubtractionStrategy(new Parameters.Substract(20))
             };
 
             Collection<String> questions = calculationGenerator.generate(2000, ops);

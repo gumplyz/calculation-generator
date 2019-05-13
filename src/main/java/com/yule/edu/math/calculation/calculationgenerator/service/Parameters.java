@@ -62,8 +62,21 @@ public class Parameters {
     }
   }
 
-  public class Substract {
+  public static class Substract {
     private int max;
+    private int numOps=2;
+
+    public Substract() {
+    }
+
+    public Substract(int max) {
+      this.max = max;
+    }
+
+    public Substract(int max, int numOps) {
+      this.max = max;
+      this.numOps = numOps;
+    }
 
     int getMax() {
       return max;
@@ -71,6 +84,14 @@ public class Parameters {
 
     public void setMax(int max) {
       this.max = max;
+    }
+
+    int getNumOps() {
+      return numOps;
+    }
+
+    public void setNumOps(int numOps) {
+      this.numOps = numOps;
     }
   }
 }
