@@ -13,13 +13,13 @@ public class AdditionStrategy implements IOperationStrategy {
   public String generate() {
     int ops;
     StringBuilder sb = new StringBuilder();
-    int sumPrev = 0;
+
     for (int i = 0; i < this.parameter.getNumOps(); i++) {
       if (i > 0 && i < this.parameter.getNumOps()) {
         sb.append(" + ");
       }
-      ops = ThreadLocalRandom.current().nextInt(0, this.parameter.getMax() - sumPrev + 1);
-      sumPrev += ops;
+      ops = ThreadLocalRandom.current().nextInt(1, this.parameter.getMax() + 1);
+
       sb.append(ops);
     }
 

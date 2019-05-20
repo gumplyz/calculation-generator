@@ -1,5 +1,6 @@
 package com.yule.edu.math.calculation.calculationgenerator.service;
 
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SubtractionStrategy implements IOperationStrategy {
@@ -12,12 +13,13 @@ public class SubtractionStrategy implements IOperationStrategy {
     @Override
     public String generate() {
         int[] ops= new int[this.parameters.getNumOps()];
-        int lower=0;
+
         for (int i = 0; i < this.parameters.getNumOps(); i++) {
-            ops[i] = ThreadLocalRandom.current().nextInt(lower, this.parameters.getMax() + 1);
-            lower=ops[i];
+            ops[i] = ThreadLocalRandom.current().nextInt(1, this.parameters.getMax() + 1);
+
         }
 
+        Arrays.sort(ops);
         StringBuilder sb= new StringBuilder();
         for (int i = ops.length-1; i>=1  ; i--) {
             sb.append(ops[i]).append(" - ");
