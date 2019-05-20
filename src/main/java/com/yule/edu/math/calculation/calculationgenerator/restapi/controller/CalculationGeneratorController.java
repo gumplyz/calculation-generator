@@ -1,11 +1,15 @@
 package com.yule.edu.math.calculation.calculationgenerator.restapi.controller;
 
-import com.yule.edu.math.calculation.calculationgenerator.service.AdditionStrategy;
+import com.yule.edu.math.calculation.calculationgenerator.service.AdditionWithCarryStrategy;
 import com.yule.edu.math.calculation.calculationgenerator.service.CalculationGenerator;
 import com.yule.edu.math.calculation.calculationgenerator.service.IOperationStrategy;
 import com.yule.edu.math.calculation.calculationgenerator.service.Parameters;
 import com.yule.edu.math.calculation.calculationgenerator.service.SubtractionStrategy;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,7 +29,7 @@ public class CalculationGeneratorController {
   @PostMapping("/math/calculation/generator")
   public Collection<String> generator(@RequestBody Parameters parameters) {
     List<IOperationStrategy> strategies = new ArrayList<>();
-    IOperationStrategy add = AdditionStrategy.take(parameters);
+    IOperationStrategy add = AdditionWithCarryStrategy.take(parameters);
     if (add != null) {
       strategies.add(add);
     }

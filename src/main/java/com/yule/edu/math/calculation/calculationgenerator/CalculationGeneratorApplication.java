@@ -1,6 +1,6 @@
 package com.yule.edu.math.calculation.calculationgenerator;
 
-import com.yule.edu.math.calculation.calculationgenerator.service.AdditionStrategy;
+import com.yule.edu.math.calculation.calculationgenerator.service.AdditionWithCarryStrategy;
 import com.yule.edu.math.calculation.calculationgenerator.service.CalculationGenerator;
 import com.yule.edu.math.calculation.calculationgenerator.service.IOperationStrategy;
 import com.yule.edu.math.calculation.calculationgenerator.service.Parameters;
@@ -37,10 +37,11 @@ public class CalculationGeneratorApplication {
     }
 
 
+
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
             IOperationStrategy[] ops = new IOperationStrategy[]{
-                    new AdditionStrategy(new Parameters.Add(20)),
+                    new AdditionWithCarryStrategy(new Parameters.Add(20)),
                     new SubtractionStrategy(new Parameters.Substract(20))
             };
 
