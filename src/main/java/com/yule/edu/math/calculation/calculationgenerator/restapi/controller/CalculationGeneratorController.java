@@ -4,7 +4,7 @@ import com.yule.edu.math.calculation.calculationgenerator.service.AdditionWithCa
 import com.yule.edu.math.calculation.calculationgenerator.service.CalculationGenerator;
 import com.yule.edu.math.calculation.calculationgenerator.service.IOperationStrategy;
 import com.yule.edu.math.calculation.calculationgenerator.service.Parameters;
-import com.yule.edu.math.calculation.calculationgenerator.service.SubtractionStrategy;
+import com.yule.edu.math.calculation.calculationgenerator.service.SubstractionWithBorrowStrategy;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +34,7 @@ public class CalculationGeneratorController {
       strategies.add(add);
     }
 
-    IOperationStrategy substract = SubtractionStrategy.take(parameters);
+    IOperationStrategy substract = SubstractionWithBorrowStrategy.take(parameters);
     if (substract != null) {
       strategies.add(substract);
     }
